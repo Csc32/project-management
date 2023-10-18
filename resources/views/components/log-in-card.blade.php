@@ -1,5 +1,5 @@
 <form action="/log-in" method="POST">
-    <section class="flex flex-col items-center px-8 py-10 gap-6">
+    <section class="flex flex-col items-center px-8 py-10 gap-6 shadow-md rounded-md">
         <div class="flex flex-col items-stretch justify-start">
             <label for="user">
                 Cedula

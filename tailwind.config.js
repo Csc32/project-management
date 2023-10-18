@@ -16,6 +16,7 @@ export default {
                 900: "#111827",
                 200: "#374151",
             },
+            copyright: "#9CA3AF",
             borderLight: "#FFFDFD",
             borderStrokeLight: "#D1D5DB",
         },

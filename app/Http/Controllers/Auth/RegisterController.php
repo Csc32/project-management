@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Validator;
 

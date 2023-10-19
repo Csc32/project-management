@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoggingController;
+use App\Http\Controllers\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,6 @@ Route::get('/', function () {
     return view('users.log-in');
 });
 
-Route::post("/log-in", [LoggingController::class, "index"]);
+Route::post("/log-in", [LoggingController::class, "index"])->name("login")->middleware("guest");
+
+Route::get("/home", [User::class, "index"])->middleware("auth");

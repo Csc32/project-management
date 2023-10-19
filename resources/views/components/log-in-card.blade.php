@@ -1,4 +1,5 @@
 <form action="/log-in" method="POST">
+    @csrf
     <section class="flex flex-col items-center px-8 py-10 gap-6 shadow-md rounded-md">
         <div class="flex flex-col items-stretch justify-start">
             <label for="user">
@@ -6,7 +7,10 @@
             </label>
             <input type="text" required
                 class="w-80 h-10 px-3 py-2 bg-white rounded-md shadow border border-borderStrokeLight justify-start items-center inline-flex"
-                id="user">
+                id="user" name="user_id">
+            @error('user_id')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="flex flex-col items-stretch justify-start">
@@ -15,7 +19,10 @@
             </label>
             <input type="password" required
                 class="w-80 h-10 px-3 py-2 bg-white rounded-md shadow border border-borderStrokeLight justify-start items-center inline-flex"
-                id="password">
+                id="password" name="password">
+            @error('password')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
         </div>
         <div class="flex flex-row justify-between gap-3 w-full h-auto">
             <div class="flex flex-row items-center gap-2">

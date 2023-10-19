@@ -11,8 +11,16 @@ class LoggingController extends Controller
     //
     public function index(Request $request)
     {
-        if (auth()->attempt($request->all())) {
+        $formFields = $request->validate([
+            "user_id" => "required",
+            "password" => "required"
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
             return redirect("/home");
         };
+
+        return back()->withErrors(["user_id" => "cedula invalida"])->onlyInput("email");
     }
 }

@@ -15,6 +15,22 @@ class User extends Controller
         return view("home.index");
     }
 
+    public function authenticate(Request $request)
+    {
+        $formFields = $request->validate([
+            "user_id" => "required",
+            "password" => "required"
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+            var_dump($formFields);
+            return redirect(route("home"));
+        };
+
+        return back()->withErrors(["user_id" => "Credenciales invalidas"])->onlyInput("user_id");
+    }
+
     /**
      * Show the form for creating a new resource.
      */

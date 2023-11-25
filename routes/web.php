@@ -17,8 +17,8 @@ use App\Http\Controllers\User;
 
 Route::get('/', function () {
     return view('users.log-in');
-});
+})->name("login");
 
-Route::post("/log-in", [LoggingController::class, "index"])->name("login")->middleware("guest");
+Route::post("/users/authenticate", [User::class, "authenticate"]);
 
-Route::get("/home", [User::class, "index"])->middleware("auth");
+Route::get("/home", [User::class, "index"])->middleware("auth")->name("home");

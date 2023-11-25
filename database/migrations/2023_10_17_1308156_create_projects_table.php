@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->constrained('users')->onUpdate("cascade");
-            $table->foreignId('student_id')->constrained('users')->onUpdate("cascade");
             $table->string("name")->unique();
-            $table->string("description");
+            $table->string("resume");
+            $table->foreignId('student_id')->constrained('users')->onUpdate("cascade");
+            $table->foreignId('teacher_id')->constrained('users')->onUpdate("cascade");
+            $table->foreignId("pfg_fk")->constrained("pfgs")->onUpdate("cascade");
             $table->timestamps();
+            $table->date("presented_at")->nullable();
         });
     }
 

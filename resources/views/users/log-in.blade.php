@@ -1,14 +1,10 @@
 <x-layout>
     <main class="w-sreen h-screen flex justify-center relative">
-        <div class="absolute w-[238px] h-[210.993px] left-[-2em] top-[-9em] z-[-1]"
-            style="background-image: url('{{ asset('images/line.svg') }}')">
-        </div>
-        <div class="absolute w-[231px] h-[210.993px] top-[-3em] left-[-4.2em] z-[-1]"
-            style="background-image: url('{{ asset('images/line.svg') }}')">
-        </div>
-        <div class="absolute w-[231px] h-[210.993px] left-[-10em] top-[-1em] z-[-1] my-2"
-            style="background-image: url('{{ asset('images/line.svg') }}')">
-        </div>
+        <x-rectangle class="w-[238px] h-[210.993px] left-[-2em] top-[-9em] z-[-1]">
+        </x-rectangle>
+        <x-rectangle class="w-[231px] h-[210.993px] top-[-3em] left-[-4.2em] z-[-1]"> </x-rectangle>
+        <x-rectangle class="w-[231px] h-[210.993px] left-[-10em] top-[-1em] z-[-1] my-2">
+        </x-rectangle>
         <section class="w-full flex flex-row flex-1 justify-evenly">
             <section class="flex flex-col py-10 justify-center items-center gap-10 w-full">
                 <header class="flex flex-col gap-10 justify-center items-center">

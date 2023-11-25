@@ -11,7 +11,7 @@
                     <div class="flex-1">
                         <img src="{{ asset('images/logo_ubv.png') }}" alt="logo UBV" class="">
                     </div>
-                    <div class="text-title-900 text-center">
+                    <div class="text-title-900 text-center font-extrabold">
                         <h1 class="text-3xl">Inicia sesión en tu cuenta para continuar</h1>
                     </div>
                 </header>

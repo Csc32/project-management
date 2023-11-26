@@ -25,8 +25,14 @@ Route::get('/', function () {
 Route::post("/users/authenticate", [User::class, "authenticate"]);
 
 Route::middleware("auth")->group(function () {
-
-    Route::get("/admin", [AdminController::class, "index"])->name("admin");
+    //admin routes
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get("/", [AdminController::class, "index"])->name("admin");
+        Route::get("/teachers", [AdminController::class, "showTeachers"])->name("admin.teachers");
+        Route::get("/roles", [AdminController::class, "showRoles"])->name("admin.pfgs");
+        Route::get("/projects", [AdminController::class, "showProjects"])->name("admin.projects");
+        Route::get("/config", [AdminController::class, "showConfig"])->name("admin.config");
+    });
     Route::get("/teacher", [TeacherController::class, "index"])->name("teacher");
     Route::get("/student", [StudentController::class, "index"])->name("student");
 });

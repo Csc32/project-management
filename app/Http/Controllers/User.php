@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 
 class User extends Controller
@@ -9,10 +10,34 @@ class User extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    protected $routes = ["admin", "teacher", "student"];
     public function index()
     {
         //
-        return view("home.index");
+
+    }
+
+    public function checkUserRole(Request $request)
+    {
+        $user = $request->user();
+
+        if (!isset($user)) {
+            return back()->withErrors(['server_error' => 'Ha ocurrido un error, vuelva a intentar'])->onlyInput("user_id");
+        }
+
+        $role = $user->rol_id;
+
+        if ($role === 1) {
+            return redirect()->route($this->routes[0]);
+        }
+        if ($role === 2) {
+            return redirect()->route($this->routes[1]);
+        }
+
+        if ($role === 3) {
+            return redirect()->route($this->routes[2]);
+        }
     }
 
     public function authenticate(Request $request)
@@ -24,12 +49,23 @@ class User extends Controller
 
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            var_dump($formFields);
-            return redirect(route("home"));
+            return $this->checkUserRole($request);
         };
 
+        $request->session()->invalidate();
         return back()->withErrors(["user_id" => "Credenciales invalidas"])->onlyInput("user_id");
     }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect("/")->with("message", "You have been logout");
+    }
+
 
     /**
      * Show the form for creating a new resource.

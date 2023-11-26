@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoggingController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\User;
 
 /*
@@ -21,4 +24,13 @@ Route::get('/', function () {
 
 Route::post("/users/authenticate", [User::class, "authenticate"]);
 
-Route::get("/home", [User::class, "index"])->middleware("auth")->name("home");
+Route::middleware("auth")->group(function () {
+
+    Route::get("/admin", [AdminController::class, "index"])->name("admin");
+    Route::get("/teacher", [TeacherController::class, "index"])->name("teacher");
+    Route::get("/student", [StudentController::class, "index"])->name("student");
+});
+
+/* Route::get("/home", [User::class, "index"])->middleware("auth")->name("home"); */
+
+Route::post('/logout', [User::class, "logout"]);

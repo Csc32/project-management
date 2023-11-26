@@ -25,8 +25,11 @@ export default {
             error: {
                 900: "#FF0000",
                 600: "#FF3B3B",
+                200: "#F78686",
+                100: "#FFB1B1",
             },
             delete: "#C60101",
+            titlteLight: "#FFFDFD",
         },
     },
     darkMode: "class",

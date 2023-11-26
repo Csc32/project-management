@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             PfgsSeeder::class,
             CategorySeeder::class,
             AdminUserSeeder::class,
-            //  UserSeeder::class,
+            UserSeeder::class,
 
 
         ]);

@@ -36,6 +36,7 @@ export default {
                 900: "#F2E9E9",
             },
             desactivate: "#96A6D4",
+            bgLight: "#F4F4F4",
         },
     },
     darkMode: "class",

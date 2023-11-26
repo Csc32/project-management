@@ -11,7 +11,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-white dark:bg-title-900 w-screen h-screen overflow-hidden">
+<body class="bg-bgLight dark:bg-title-900 w-screen h-screen overflow-hidden">
     {{ $slot }}
 </body>
 

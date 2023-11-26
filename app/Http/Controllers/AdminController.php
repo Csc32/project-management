@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,10 +10,16 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
+    use Authenticatable;
     public function index()
     {
         //
-        return view("admin.home");
+        return view("admin.home", ["name" => auth()->user()->names]);
+    }
+
+    public function showTeachers(Request $request)
+    {
+        return view("admin.teachers");
     }
 
     /**

@@ -19,6 +19,9 @@ export default {
                 900: "#111827",
                 200: "#374151",
             },
+            bigTitle: {
+                900: "#1E1E1E",
+            },
             copyright: "#9CA3AF",
             borderLight: "#FFFDFD",
             borderStrokeLight: "#D1D5DB",
@@ -29,7 +32,10 @@ export default {
                 100: "#FFB1B1",
             },
             delete: "#C60101",
-            titlteLight: "#FFFDFD",
+            titleLight: {
+                900: "#F2E9E9",
+            },
+            desactivate: "#96A6D4",
         },
     },
     darkMode: "class",

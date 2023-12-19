@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string("name")->unique();
             $table->string("resume");
-            $table->foreignId('student_id')->constrained('users')->onUpdate("cascade");
             $table->foreignId('teacher_id')->constrained('users')->onUpdate("cascade");
             $table->foreignId("pfg_fk")->constrained("pfgs")->onUpdate("cascade");
             $table->timestamps();
+            $table->string("image")->nullable();
+            $table->boolean("isPresente")->default(0);
             $table->date("presented_at")->nullable();
         });
     }

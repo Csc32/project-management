@@ -17,10 +17,12 @@ class AdminUserSeeder extends Seeder
             "user_id" => "123456",
             "names" => "Aministrador",
             "lastnames" => "Administrador",
+            "sex" => "M",
             "password" => bcrypt("123456"),
             "telephone_number" => "04161234567",
             "email" => "administrador@gmail.com",
-            "rol_id" => 1
+            "date_of_birth" => "01/11/2002",
+            "rol_fk" => 1
         ]);
     }
 }

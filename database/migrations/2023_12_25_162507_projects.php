@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("name")->unique();
             $table->longText("resume");
-            $table->foreignId("pfg_fk")->constrained("pfgs")->onUpdate("cascade");
-            $table->foreignId("king_fk")->constrained("king_project")->onUpdate("cascade");
+            $table->foreignId("pfg_fk")->constrained("pfgs")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("king_fk")->constrained("kind_projects")->onUpdate("cascade")->onDelete("cascade");
             $table->boolean("isPresente")->default(0);
             $table->timestamps();
             $table->date("presented_at")->nullable();

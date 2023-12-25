@@ -18,10 +18,13 @@ class UserSeeder extends Seeder
             "user_id" => "29964042",
             "names" => "Carlos",
             "lastnames" => "Sanzonetty",
+            "sex" => "M",
             "password" => bcrypt("29964042"),
             "telephone_number" => "04263192920",
             "email" => "carlos@gmail.com",
-            "rol_id" => 3
+            "date_of_birth" => "01/11/2002",
+            "rol_fk" => 3,
+            'pfg_fk' => 1
         ]);
     }
 }

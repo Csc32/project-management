@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->foreignId("pfg_fk")->nullable()->constrained("pfgs")->onUpdate("cascade");
             $table->foreignId("rol_fk")->constrained("roles")->onUpdate("cascade");
-            $table->longText("profile_photo");
+            $table->longText("profile_photo")->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->timestamp("last_visit");
+            $table->timestamp("last_visit")->nullable();
         });
     }
 

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('groups', function (Blueprint $table) {
+        Schema::create('kind_projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->unique()->constrained('users')->onUpdate("cascade");
+            $table->string("name", 100);
+            $table->string("abbr", 10);
         });
     }
 
@@ -23,7 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('groups');
+        Schema::dropIfExists('kind_projects');
     }
 };

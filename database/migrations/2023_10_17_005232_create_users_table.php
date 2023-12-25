@@ -17,12 +17,16 @@ return new class extends Migration
             $table->string('names');
             $table->string('lastnames');
             $table->string('password');
+            $table->char("sex", 1);
+            $table->date("date_of_birth");
             $table->string('telephone_number');
             $table->string('email')->unique();
-            $table->foreignId("pfg_id")->nullable()->constrained("pfgs")->onUpdate("cascade");
-            $table->foreignId("rol_id")->constrained("roles")->onUpdate("cascade");
+            $table->foreignId("pfg_fk")->nullable()->constrained("pfgs")->onUpdate("cascade");
+            $table->foreignId("rol_fk")->constrained("roles")->onUpdate("cascade");
+            $table->longText("profile_photo");
             $table->rememberToken();
             $table->timestamps();
+            $table->timestamp("last_visit");
         });
     }
 

@@ -17,8 +17,8 @@ class PeopleChart
     {
         return $this->chart->pieChart()
             ->addData([
-                \App\Models\User::with("role_id")->where("rol_id", "=", 2)->count("id"),
-                \App\Models\User::with("role_id")->where("rol_id", "=", 3)->count("id"),
+                \App\Models\User::with("role_fk")->where("rol_fk", "=", 2)->count("id"),
+                \App\Models\User::with("role_fk")->where("rol_fk", "=", 3)->count("id"),
             ])
             ->setLabels(["Profesores", "Estudiantes"]);
     }

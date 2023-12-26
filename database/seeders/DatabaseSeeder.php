@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,10 +24,12 @@ class DatabaseSeeder extends Seeder
             PermissionsSeeder::class,
             PfgsSeeder::class,
             CategorySeeder::class,
+            kindProject::class,
             AdminUserSeeder::class,
             UserSeeder::class,
-
-
+            //TeacherSeeder::class,
+            //GroupSeeder::class
+            //ProjectSeeder::class
         ]);
     }
 }

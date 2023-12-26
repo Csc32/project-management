@@ -2,32 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\StudentGroups;
 use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class TeacherSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //
-
-        $student = User::factory()->create([
-            "user_id" => "29964042",
-            "names" => "Carlos",
-            "lastnames" => "Sanzonetty",
-            "sex" => "M",
-            "password" => bcrypt("29964042"),
-            "telephone_number" => "04263192920",
-            "email" => "carlos@gmail.com",
-            "date_of_birth" => "01/11/2002",
-            "rol_fk" => 3,
-            'pfg_fk' => 1
-        ]);
-
         $teacher = User::factory()->create([
             "user_id" => "12275012",
             "names" => "Soliver",
@@ -47,11 +32,6 @@ class UserSeeder extends Seeder
             "pfg_fk" => 1,
             "kind_fk" => 1,
             "isPresent" => false,
-        ]);
-
-        $groups = StudentGroups::factory()->create([
-            "project_fk" => 1,
-            "student_fk" => 2
         ]);
     }
 }

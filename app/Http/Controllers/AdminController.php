@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\PeopleChart;
 use App\Charts\ProjectsCharts;
 use App\Models\Projects;
+use App\Models\User;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class AdminController extends Controller
     public function index(PeopleChart $peopleChart, ProjectsCharts $projectsCharts)
     {
         //
-        $lastProjects = Projects::with("teacher_id")->latest("created_at")->take(3)->get();
-        return view("admin.home", ['chart' => $peopleChart->build(), 'projects' => $projectsCharts->build(), ["lastProjects" => $lastProjects]],);
+        $lastProjects = Projects::latest()->take(3)->get();
+
+        return view("admin.home", ['chart' => $peopleChart->build(), 'projects' => $projectsCharts->build(), "lastProjects" => $lastProjects],);
     }
 
     public function showTeachers(Request $request)

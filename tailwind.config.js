@@ -37,6 +37,11 @@ export default {
             },
             desactivate: "#96A6D4",
             bgLight: "#F4F4F4",
+            route: {
+                900: "#4F46E5",
+                700: "#4841BB",
+                500: "#6F66FF",
+            },
         },
     },
     darkMode: "class",

@@ -32,19 +32,24 @@
                 </articles>
             </section>
             <section>
-                <article class="flex flex-col gap-5 w-[80%] ">
+                <x-project-card>
+                    <x-projects :lastProjects="$lastProjects" />
+                </x-project-card>
+                {{--                 <article class="flex flex-col gap-5 w-[80%] ">
                     <header class="w-full bg-desactivate p-6 text-center font-bold text-xl rounded-lg">
                         <h3>Ultimo proyectos registrados</h3>
                     </header>
-                    @if (isset($lastProjects) && count($lastProjects) > 0)
-                        <p>Ultimos 3 projectos registrados</p>
-                        <a href="{{ route('admin.projects') }}">Ver más</a>
-                    @else
-                        <p class="w-full bg-borderLight p-3 text-center font-bold text-mediun rounded-lg">Aun no se han
-                            registrado
-                            proyectos</p>
-                    @endif
-                </article>
+                    <section class="w-100 row gap-8 flex-1">
+                        @if (isset($lastProjects))
+                            <x-projects :lastProjects="$lastProjects" />
+                        @else
+                            <p class="w-full bg-borderLight p-3 text-center font-bold text-mediun rounded-lg">Aun no se
+                                han
+                                registrado
+                                proyectos</p>
+                        @endif
+                    </section>
+                </article> --}}
             </section>
         </section>
         <script src="{{ $chart->cdn() }}"></script>

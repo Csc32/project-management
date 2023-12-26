@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -23,10 +25,13 @@ class User extends Authenticatable
         'user_id',
         'names',
         'lastnames',
+        "sex",
         'password',
         'telephone_number',
         'email',
-        "role_id"
+        "role_fk",
+        "date_of_birth"
+
     ];
 
     /**
@@ -59,8 +64,13 @@ class User extends Authenticatable
         return $this->belongsTo(Pfgs::class);
     }
 
-    public function projects(): BelongsToMany
+    public function teacher_projects(): HasMany
     {
-        return $this->belongsToMany(Project::class);
+        return $this->hasMany(Projects::class, "teacher_fk");
+    }
+
+    public function students_project(): HasOne
+    {
+        return $this->hasOne("project_groups", "student_fk");
     }
 }

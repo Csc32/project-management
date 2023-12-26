@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Projects extends Model
 {
@@ -26,9 +27,9 @@ class Projects extends Model
     {
         return $this->belongsTo(User::class, "teacher_fk");
     }
-    public function students(): BelongsToMany
+    public function student_groups(): HasOne
     {
-        return $this->belongsToMany(User::class, "project_groups")->using(ProjectGroups::class);
+        return $this->hasOne(StudentGroups::class, "project_fk");
     }
 
     public function categories(): BelongsToMany

@@ -69,8 +69,8 @@ class User extends Authenticatable
         return $this->hasMany(Projects::class, "teacher_fk");
     }
 
-    public function students_project(): HasOne
+    public function student_groups(): BelongsTo
     {
-        return $this->hasOne("project_groups", "student_fk");
+        return $this->belongsTo(StudentGroups::class, "student_fk");
     }
 }

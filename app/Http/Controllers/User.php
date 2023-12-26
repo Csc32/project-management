@@ -26,7 +26,7 @@ class User extends Controller
             return back()->withErrors(['server_error' => 'Ha ocurrido un error, vuelva a intentar'])->onlyInput("user_id");
         }
 
-        $role = $user->rol_id;
+        $role = $user->rol_fk;
 
         if ($role === 1) {
             return redirect()->route($this->routes[0]);

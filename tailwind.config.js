@@ -42,6 +42,10 @@ export default {
                 700: "#4841BB",
                 500: "#6F66FF",
             },
+            green: {
+                700: "#00D964",
+                500: "#0FDF6F",
+            },
         },
     },
     darkMode: "class",

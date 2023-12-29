@@ -7,20 +7,20 @@
         $title = 'Panel';
     }
     if ($routeName == 'admin.teachers') {
-        $title = 'Tabla de profesores Registrados';
+        $title = 'Gestion de profesores';
     }
     if ($routeName == 'admin.students') {
         $title = 'Tabla de estudiantes registrados';
     }
     if ($routeName == 'admin.pfgs') {
-        $title = 'Administrar Programas de Formacion';
+        $title = 'Gestion de Programas de Formación de grado';
     }
     if ($routeName == 'admin.roles') {
-        $title = 'Gestionar roles';
+        $title = 'Gestionar roles y permisos';
     }
 
     if ($routeName == 'admin.config') {
-        $title = 'Configurar usuario';
+        $title = 'Configuracion';
     }
 @endphp
 <section class="mt-4">

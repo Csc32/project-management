@@ -1,7 +1,7 @@
 @php
     $routeName = \Request::route()->getName();
 @endphp
-<nav class="flex flex-col w-full justify-center items-center gap-1">
+<nav class="flex flex-col w-full justify-center items-center gap-1 sticky">
     <ul class="w-full font-normal text-sm">
         <li><a href="{{ route('admin') }}"
                 class="flex justify-center items-center text-white py-2 px-4 w-full h-16 gap-4 @if ($routeName === 'admin') text-titleLight-900 @else text-desactivate @endif"><span>

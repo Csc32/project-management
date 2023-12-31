@@ -5,8 +5,7 @@
             <x-navbar />
             <x-nav-bottom />
         </x-aside>
-        @livewire('teacher-modal')
-        <section class="w-screen flex flex-col px-9 py-9">
+        <section class="w-full flex flex-col px-9 py-9">
             <x-title-component />
             <section class="flex justify-center items-center">
                 <header class="w-full flex row items-center">

@@ -56,12 +56,12 @@ class User extends Authenticatable
 
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Roles::class);
+        return $this->belongsTo(Roles::class, "role_fk");
     }
 
     public function pfg(): BelongsTo
     {
-        return $this->belongsTo(Pfgs::class);
+        return $this->belongsTo(Pfgs::class, "pfg_fk");
     }
 
     public function teacher_projects(): HasMany

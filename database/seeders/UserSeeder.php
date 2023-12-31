@@ -53,5 +53,7 @@ class UserSeeder extends Seeder
             "project_fk" => 1,
             "student_fk" => 2
         ]);
+
+        User::factory()->createMany(50);
     }
 }

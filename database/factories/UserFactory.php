@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+
+    public $sex = ["M", "F"];
     /**
      * Define the model's default state.
      *
@@ -17,7 +19,18 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        return [
+            "user_id" => rand(0, 1000),
+            "names" => fake()->name(),
+            "pfg_fk" => rand(1, 5),
+            "sex" => $this->sex[rand(0, 1)],
+            "lastnames" => fake()->lastName(),
+            "date_of_birth" => fake()->date(),
+            "telephone_number" => fake()->phoneNumber(),
+            "email" => fake()->email(),
+            "password" => fake()->password(8),
+            "rol_fk" => rand(1, 3),
+        ];
     }
 
     /**

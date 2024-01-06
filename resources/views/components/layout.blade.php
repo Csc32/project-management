@@ -13,7 +13,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body class="bg-bgLight dark:bg-title-900 w-screen flex overflow-hidden">
+<body class="bg-bgLight dark:bg-title-900 w-screen h-full flex overflow-hidden">
 
     {{ $slot }}
     @livewireScriptConfig

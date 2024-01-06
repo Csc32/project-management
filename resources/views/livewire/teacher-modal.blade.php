@@ -1,13 +1,13 @@
-<div class="fixed w-full h-auto inset-0 z-50 overflow-hidden flex justify-center items-center p-8"
-    style="background: rgba(0,0,0,.7);">
-    <div class="flex-col p-8 bg-borderLight shadow w-full rounded-2xl">
+<div class="fixed w-full h-auto inset-0 z-50 overflow-hidden flex justify-center items-center p-8 {{ $attribute }} transition-all ease delay-700"
+    id="modal-form" style="background: rgba(0,0,0,.7);">
+    <div class="flex-col p-8 bg-borderLight shadow w-full rounded-2xl relative">
         <h3 class="mb-6 font-semibold text-lg">Complete el siguiente formulario para añadir a un profesor</h3>
+        <button type="button" wire:click="close"
+            class="absolute text-bgLight w-10 h-10 rounded-lg bg-error-900 flex items-center justify-center font-semibold right-1 top-1">
+            <x-heroicon-o-x-mark style="height: 40px" />
+        </button>
         <form wire:submit='save'>
             <div class="grid gap-7 mb-6 md:grid-cols-3 relative p-5">
-                <div
-                    class="absolute text-bgLight w-10 h-10 rounded-lg bg-error-900 flex items-center justify-center font-semibold right-0 top-0 ">
-                    <x-heroicon-o-x-mark style="height: 40px" />
-                </div>
                 <div>
                     <label for="user_id" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Cédula
                         <span class="text-delete">*</span></label>

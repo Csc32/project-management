@@ -1,13 +1,13 @@
 <x-layout>
-    <main class="flex flex-row w-full h-full">
+    <main class="flex row flex-1">
         <x-aside>
             <x-logo />
             <x-navbar />
             <x-nav-bottom />
         </x-aside>
-        <section class="w-auto flex flex-col px-9 py-9">
+        <section class="w-full flex flex-col px-9 py-9">
             <x-title-component />
-            <section class="w-full flex flex-row justify-evenly items-center">
+            <section class="w-full flex flex-row px-9 py-9">
                 <articles class="w-96 h-[27rem] flex flex-col p-4">
                     <h3 class="font-bold">Personas Registradas</h3>
                     <div class="bg-borderLight w-full h-auto flex flex-col">

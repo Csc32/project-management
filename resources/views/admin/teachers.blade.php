@@ -5,10 +5,11 @@
             <x-navbar />
             <x-nav-bottom />
         </x-aside>
+        <livewire:teacherModal />
         <section class="w-full flex flex-col px-9 py-9">
             <x-title-component />
-            <section class="flex justify-center items-center">
-                <header class="w-full flex row items-center">
+            <section class="flex flex-col justify-center items-center">
+                <header class="w-full flex row items-center flex-1">
                     <x-search />
                     <livewire:btn-add :attrs="[
                         'class' =>
@@ -17,12 +18,10 @@
                         'wire:click' => 'show',
                     ]" />
                 </header>
-            </section>
-            <section class="my-6">
-                <livewire:teachers-table />
+                <section class="my-6 w-full">
+                    <livewire:teachers-table />
+                </section>
             </section>
         </section>
-
     </main>
-
 </x-layout>

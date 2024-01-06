@@ -10,11 +10,11 @@ class Search extends Component
 
     public function searching()
     {
-        $this->dispatch("searching", value: $this->value);
+        $this->dispatch("searching", value: strtoupper($this->value));
     }
     public function render()
     {
-        $this->dispatch("searching", value: $this->value);
+        $this->dispatch("searching", value: strtoupper($this->value));
         return view('livewire.search');
     }
 }

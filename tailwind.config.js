@@ -45,6 +45,8 @@ export default {
             green: {
                 700: "#00D964",
                 500: "#0FDF6F",
+                text: "#065F46",
+                200: "#ECFDF5",
             },
         },
     },

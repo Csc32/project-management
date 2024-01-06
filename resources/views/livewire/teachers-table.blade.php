@@ -16,9 +16,11 @@
             </tr>
         </thead>
         <tbody>
-            @if (empty($teachers))
+            @if (empty($teachers) || count($teachers) <= 0)
                 <tr class="bg-bgLight border-b border-b-logo-500">
-                    No hay profesores registrados
+                    <td>
+                        No hay profesores registrados
+                    </td>
                 </tr>
             @else
                 @foreach ($teachers as $teacher)
@@ -32,8 +34,27 @@
                         <td class="px-6 py-4">
                             {{ $teacher->email }}
                         </td>
-                        <td class="px-6 py-4">
-                            {{ $teacher->names }}
+                        <td class="px-6 py-4 flex row gap-5">
+                            <a href="{{ route('admin.teachers') }}/{{ $teacher->id }}"
+                                class="flex items-center gap-3  text-route-900 font-semibold"
+                                wire:key='{{ $teacher->id }}' wire:click.prevent='edit({{ $teacher->id }})'>
+                                <span>
+                                    Editar
+                                </span>
+                                <span>
+                                    <x-heroicon-s-pencil-square style="height: 20px" />
+                                </span>
+                            </a>
+                            <a href="{{ route('admin.teachers') }}/{{ $teacher->id }}"
+                                class="flex items-center gap-3  text-delete font-semibold"
+                                wire:key='{{ $teacher->id }}' wire:click.prevent='delete({{ $teacher->id }})'>
+                                <span class="">
+                                    Eliminar
+                                </span>
+                                <span>
+                                    <x-fas-delete-left style="height: 20px" />
+                                </span>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

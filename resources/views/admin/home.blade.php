@@ -1,5 +1,5 @@
 <x-layout>
-    <main class="flex row flex-1">
+    <main class="flex row flex-1 w-full">
         <x-aside>
             <x-logo />
             <x-navbar />

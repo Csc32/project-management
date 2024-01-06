@@ -3,16 +3,80 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\On;
 
 class TeachersTable extends Component
 {
 
     use WithPagination;
+    public $searchValue = "";
+    #[On('updatedTeacher')]
+    public function updateTable()
+    {
+        return $this->render();
+    }
 
+    #[On('created')]
+    public function created()
+    {
+        return $this->render();
+    }
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        $this->dispatch("edit", user: $user);
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        $userName = $user->names;
+
+        $user->delete();
+
+        $this->dispatch("delete", message: "El profesor $userName fue borrado satisfactoriamente");
+    }
+    #[On('searching')]
+    public function handleSearching($value)
+    {
+        $this->searchValue = $value;
+    }
     public function render()
     {
-        return view('livewire.teachers-table', ["teachers" => User::with("pfg")->where("rol_fk", 2)->Paginate(10)]);
+        $teachers = User::with("pfg")->where("rol_fk", 2)->when(
+            $this->searchValue != '',
+            fn (Builder $query) => $query->where([
+                [
+                    "names", "like", $this->searchValue . "%",
+                ],
+                [
+                    "rol_fk", '=', 2
+                ]
+            ])->orWhere(
+                [
+                    [
+                        "lastnames", "like", $this->searchValue . "%",
+                    ],
+                    [
+                        "rol_fk", '=', 2
+                    ]
+                ]
+            )->orWhere(
+                [
+                    [
+                        "user_id", "like", $this->searchValue . "%",
+                    ],
+                    [
+                        "rol_fk", '=', 2
+                    ]
+                ]
+            )
+        )->paginate(10);
+        return view('livewire.teachers-table', ["teachers" => $teachers]);
     }
 }

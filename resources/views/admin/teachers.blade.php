@@ -1,5 +1,5 @@
 <x-layout>
-    <main class="flex row">
+    <main class="flex row w-full">
         <x-aside>
             <x-logo />
             <x-navbar />
@@ -7,10 +7,12 @@
         </x-aside>
         <livewire:teacherModal />
         <section class="w-full flex flex-col px-9 py-9">
+            <livewire:alert />
             <x-title-component />
             <section class="flex flex-col justify-center items-center">
                 <header class="w-full flex row items-center flex-1">
-                    <x-search />
+                    {{--                     <x-search /> --}}
+                    <livewire:search />
                     <livewire:btn-add :attrs="[
                         'class' =>
                             'flex row justify-evenly items-center w-44 h-10 px-2 py-2.5  bg-green-500 rounded-md gap-3.5  text-title font-semibold text-xl',

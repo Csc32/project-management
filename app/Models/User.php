@@ -29,9 +29,9 @@ class User extends Authenticatable
         'password',
         'telephone_number',
         'email',
-        "role_fk",
+        "rol_fk",
+        "pfg_fk",
         "date_of_birth"
-
     ];
 
     /**

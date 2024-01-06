@@ -15,7 +15,7 @@ class BtnAdd extends Component
 
     public function show()
     {
-        $this->dispatch("show", "Aaaaaaah");
+        $this->dispatch('show', ["isHidden" => false]);
     }
 
     public function render()

@@ -8,11 +8,20 @@ use Livewire\Attributes\On;
 class TeacherModal extends Component
 {
     public $title = "En el modal";
+    public $attribute = 'hidden';
 
     #[On('show')]
-    public function show($other)
+    public function show($isHidden = true)
     {
-        $this->title = $other;
+
+        if ($isHidden) {
+            return $this->attribute = "";
+        }
+        return $this->attribute = "hidden";
+    }
+    public function close()
+    {
+        $this->attribute = "hidden";
     }
     public function render()
     {

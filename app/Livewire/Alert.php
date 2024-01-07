@@ -10,8 +10,15 @@ class Alert extends Component
     public $message = '';
     public $show = 'hidden';
 
-    #[On('created')]
+    #[On('createdTeacher')]
     public function handleCreated($message)
+    {
+        $this->message = $message;
+        $this->show = "";
+    }
+
+    #[On('updatedTeacher')]
+    public function handleUpdated($message)
     {
         $this->message = $message;
         $this->show = "";

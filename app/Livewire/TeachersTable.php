@@ -14,7 +14,7 @@ class TeachersTable extends Component
     use WithPagination;
     public $searchValue = "";
     #[On('updatedTeacher')]
-    public function updateTable()
+    public function updateTable($message = null, $errors = null)
     {
         return $this->render();
     }

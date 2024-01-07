@@ -5,22 +5,13 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Models\User;
-use Illuminate\Validation\Rule;
+use App\traits\ValidationRules;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherModal extends Component
 {
+    use ValidationRules;
     public $attribute = 'hidden';
-    public $errors = [
-        "user_id" => [],
-        "names" => [],
-        "lastnames" => [],
-        "sex" => [],
-        "email" => [],
-        "tel" => [],
-        "pfg" => [],
-        "date" => []
-    ];
 
     public $id;
     public $user_id;
@@ -33,57 +24,6 @@ class TeacherModal extends Component
     public $date;
     public $btnTitle = "Agregar";
 
-    public function rules()
-    {
-        return [
-            'user_id' => [
-                'required',
-                'min:5',
-                Rule::unique('users', 'user_id')
-            ],
-            'names' => [
-                'required',
-                'string',
-            ],
-            'lastnames' => [
-                'required',
-                'string',
-            ],
-            'sex' => [
-                'required'
-            ],
-            'email' => [
-                'required',
-                Rule::unique('users', 'email')
-            ],
-            'telephone_number' => [
-                'required',
-                'numeric'
-            ],
-            'pfg_fk' => [
-                'required',
-            ],
-            'date_of_birth' => [
-                'required'
-            ]
-        ];
-    }
-    public function messages()
-    {
-        return [
-            'user_id.required' => 'Debe ingresar una cédula',
-            'user_id.min' => 'La cédula es muy corta',
-            'user_id.unique' => 'La cédula ya esta registrada',
-            'names.required' => 'El nombre es requerido',
-            'names.string' => 'El nombre debe ser texto',
-            'lastnames.required' => 'El apellido es requerido',
-            'sex.required' => 'El sexo es requerido',
-            'telephone_number.required' => 'El telefono es requerido',
-            'telephone_number.numeric' => 'El telefono debe ser númerico',
-            'pfg_fk.required' => "Debe seleccionar un pfg",
-            'date.required' => "Debe indicar la fecha de nacimiento"
-        ];
-    }
     #[On('show')]
     public function show($isHidden = true)
     {
@@ -96,23 +36,11 @@ class TeacherModal extends Component
     public function close()
     {
         $this->attribute = "hidden";
+        $this->resetForm();
+        $this->errors = [];
     }
     public function save()
     {
-        if (isset($this->id)) {
-            $user = User::find($this->id);
-            $user->user_id = $this->user_id;
-            $user->names = $this->names;
-            $user->lastnames =  $this->lastnames;
-            $user->sex = $this->sex;
-            $user->email = $this->email;
-            $user->telephone_number = $this->tel;
-            $user->pfg_fk = $this->pfg;
-            $user->date_of_birth = $this->date;
-            $user->save();
-            $this->resetForm();
-            return $this->dispatch("updatedTeacher");
-        }
         //save data in an array_assoc
         $data = [
             'user_id' => $this->user_id,
@@ -124,24 +52,57 @@ class TeacherModal extends Component
             'pfg_fk' => $this->pfg,
             'date_of_birth' => $this->date,
         ];
-
+        //validate depending of if an update or new user
         $validator = Validator::make($data, $this->rules(), $this->messages());
-        if ($validator->passes()) {
+        if (isset($this->id) && $validator->passes()) {
+            //save the validated data
+            $validated = $validator->validated();
+            $user = User::find($this->id);
+            $user->user_id = $validated['user_id'];
+            $user->names = $validated['names'];
+            $user->lastnames =   $validated['lastnames'];
+            $user->sex = $validated['sex'];
+            $user->email = $validated['email'];
+            $user->telephone_number = $validated['telephone_number'];
+            $user->pfg_fk = $validated['pfg_fk'];
+            $user->date_of_birth = $validated['date_of_birth'];
+            $user->save();
+            $this->resetForm();
+            return $this->dispatch("updatedTeacher");
+        }
+        if (isset($this->id) && $validator->fails()) {
+            $this->attribute = "";
+            $this->errors = [
+                'user_id' =>  $validator->errors()->get("user_id"),
+                'names' =>  $validator->errors()->get("names"),
+                'lastnames' =>  $validator->errors()->get("lastname"),
+                'sex' =>  $validator->errors()->get("sex"),
+                'email' =>  $validator->errors()->get("email"),
+                'tel' =>  $validator->errors()->get("tel"),
+                'pfgs' =>  $validator->errors()->get("pfg"),
+                'date' =>  $validator->errors()->get("date"),
+            ];
+            return $this->render();
+        }
+
+        if (!isset($this->id) && $validator->passes()) {
+            $validated = $validator->validated();
             $user = User::create([
-                "user_id" => $data['user_id'],
-                "names" => $data['names'],
-                "lastnames" => $data['lastnames'],
-                "sex" => $data['sex'],
-                'email' =>  $data['email'],
-                'telephone_number' => $data['telephone_number'],
-                "password" => bcrypt($data['user_id']),
-                "pfg_fk" => $data['pfg_fk'],
-                'date_of_birth' => $data['date_of_birth'],
+                "user_id" =>  $validated['user_id'],
+                "names" => $validated['names'],
+                "lastnames" => $validated['lastnames'],
+                "sex" => $validated['sex'],
+                'email' =>  $validated['email'],
+                'telephone_number' => $validated['telephone_number'],
+                "password" => bcrypt($validated['user_id']),
+                "pfg_fk" => $validated['pfg_fk'],
+                'date_of_birth' => $validated['date_of_birth'],
                 "rol_fk" => 2
             ]);
             $this->resetForm();
             return  $this->dispatch("createdTeacher", message: "Profesor Añadido correctamente");
-        } else {
+        }
+        if (!isset($this->id) && $validator->fails()) {
             $this->attribute = "";
             $this->errors = [
                 'user_id' =>  $validator->errors()->get("user_id"),
@@ -157,9 +118,13 @@ class TeacherModal extends Component
         }
     }
     #[On('updatedTeacher')]
-    public function updated()
+    public function updated($errors = null)
     {
-        $this->close();
+        if (!isset($errors)) {
+            $this->close();
+            return $this->resetForm();
+        }
+        return $this->attribute = "";
     }
     #[On('edit')]
     public function edit($user)
@@ -180,6 +145,7 @@ class TeacherModal extends Component
     }
     protected function resetForm()
     {
+        $this->id = null;
         $this->user_id = '';
         $this->names = '';
         $this->lastnames = '';

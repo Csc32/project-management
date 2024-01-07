@@ -13,7 +13,10 @@
                         <span class="text-delete">*</span></label>
                     <input type="text" id="first_name"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="12345" required wire:model='user_id'>
+                        placeholder="12345" required wire:model='user_id' name="user_id">
+                    @if (isset($errors['user_id'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['user_id'][0] }}</p>
+                    @endif
                 </div>
                 <div>
                     <label for="names" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Nombres
@@ -21,6 +24,9 @@
                     <input type="text" id="first_name"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required wire:model='names'>
+                    @if (isset($errors['names'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['names'][0] }}</p>
+                    @endif
                 </div>
                 <div>
                     <label for="last_name" class="block mb-2 text-md font-medium text-title-900 dark:text-white">
@@ -28,6 +34,9 @@
                     <input type="text" id="last_name"
                         class="bg-borderlight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Doe" required wire:model='lastnames'>
+                    @if (isset($errors['lastnames'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['lastnames'][0] }}</p>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <div class="flex flex-col justify-center items-center">
@@ -50,6 +59,9 @@
                                 <label for="inline-2-radio"
                                     class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Femenino</label>
                             </div>
+                            @if (isset($errors['sex'][0]))
+                                <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['sex'][0] }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -59,13 +71,19 @@
                     <input type="email" id="email"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="john.doe@company.com" required wire:model='email'>
+                    @if (isset($errors['email'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['email'][0] }}</p>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <label for="tel"
                         class="block mb-2 text-md font-medium text-title-900 dark:text-white">Télefono</label>
                     <input type="tel" id="tel"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="042600000" required wire:model='tel'>
+                        placeholder="042600000" required wire:model='tel' name="tel">
+                    @if (isset($errors['tel'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['tel'][0] }}</p>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <label for="pfg"
@@ -79,6 +97,9 @@
                             <option value="{{ $pfg->id }}">{{ $pfg->name }}</option>
                         @endforeach
                     </select>
+                    @if (isset($errors['pfg'][0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['pfg'][0] }}</p>
+                    @endif
                 </div>
                 <div class="mb-6">
                     <label for="date" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Fecha de

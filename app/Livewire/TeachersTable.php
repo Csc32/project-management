@@ -19,7 +19,7 @@ class TeachersTable extends Component
         return $this->render();
     }
 
-    #[On('created')]
+    #[On('createdTeacher')]
     public function created()
     {
         return $this->render();

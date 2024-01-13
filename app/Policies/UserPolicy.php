@@ -45,12 +45,11 @@ class UserPolicy
     public function delete(User $currentUser, User $targetUser): bool
     {
         //
-        if ($currentUser->role->name !== 'admin') {
-            return false;
+        if ($currentUser['rol_fk'] == 1 && $targetUser['rol_fk'] == 2) {
+            return true;
         }
 
-        // Teachers can delete students
-        if ($currentUser->role->name === 'teacher' && $targetUser->role->name === 'student') {
+        if ($currentUser['rol_fk'] == 2 && $targetUser['rol_fk'] == 3) {
             return true;
         }
 

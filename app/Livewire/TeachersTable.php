@@ -10,9 +10,9 @@ use Livewire\Attributes\On;
 
 class TeachersTable extends Component
 {
-
     use WithPagination;
     public $searchValue = "";
+
     #[On('updatedTeacher')]
     public function updateTable($message = null, $errors = null)
     {
@@ -28,15 +28,17 @@ class TeachersTable extends Component
     {
         $user = User::find($id);
 
+
         $this->dispatch("edit", user: $user);
     }
+
 
     public function delete($id)
     {
         $user = User::find($id);
 
+        $this->authorize("delete", $user);
         $userName = $user->names;
-
         $user->delete();
 
         $this->dispatch("delete", message: "El profesor $userName fue borrado satisfactoriamente");

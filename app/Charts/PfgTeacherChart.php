@@ -24,7 +24,7 @@ class PfgTeacherChart
 
         $arrayData = $data->toArray();
         return $this->chart->pieChart()
-            ->setTitle('Total de profesores')->setFontFamily('montserrat')->setFontColor("#1e1e1e")
+            ->setTitle('Total de profesores')->setFontFamily('montserrat')
             ->addData($arrayData)
             ->setLabels($studentByPfg->pluck('name')->toArray());
     }

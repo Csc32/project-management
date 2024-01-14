@@ -3,6 +3,8 @@
 namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\Pfgs;
 
 class PfgTeacherChart
 {
@@ -15,9 +17,15 @@ class PfgTeacherChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
+        $studentByPfg  = Pfgs::withCount(['user' => function (Builder $query) {
+            $query->where("users.rol_fk", "=", 2);
+        }])->get();
+        $data = $studentByPfg->pluck('user_count');
+
+        $arrayData = $data->toArray();
         return $this->chart->pieChart()
-            ->setTitle('Profesores')->setFontFamily('montserrat')->setFontColor("#1e1e1e")
-            ->addData([10, 20, 30])
-            ->setLabels(['Player 7', 'Player 10', 'Player 9']);
+            ->setTitle('Total de profesores')->setFontFamily('montserrat')->setFontColor("#1e1e1e")
+            ->addData($arrayData)
+            ->setLabels($studentByPfg->pluck('name')->toArray());
     }
 }

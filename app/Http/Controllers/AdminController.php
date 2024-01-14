@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Charts\PeopleChart;
 use App\Charts\ProjectsCharts;
+use App\Charts\PfgStudentChart;
+use App\Charts\PfgTeacherChart;
 use App\Models\Projects;
 use App\Models\User;
 use Illuminate\Auth\Authenticatable;
@@ -26,6 +28,11 @@ class AdminController extends Controller
     public function showTeachers(Request $request)
     {
         return view("admin.teachers");
+    }
+
+    public function showPfgs(PfgStudentChart $studentChart, PfgTeacherChart $teacherChart)
+    {
+        return view("admin.pfgs", ['teacherChart' => $teacherChart->build(), 'studentChart' => $studentChart->build()]);
     }
 
     /**

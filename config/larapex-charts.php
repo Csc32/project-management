@@ -11,9 +11,9 @@ return [
     |
     */
 
-    'font_family' => 'Montserrat,Helvetica, Arial, sans-serif',
+    'font_family' => 'Montserrat, Helvetica, Arial, sans-serif',
 
-    'font_color' => '#373d3f',
+    'font_color' => '#111827',
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     */
 
     'colors' => [
-        '#B7CAFF', '#1E3A8A', '#feb019', '#ff455f', '#775dd0', '#80effe',
+        '#B7CAFF', '#0FDF6F', '#feb019', '#ff455f', '#775dd0', '#80effe',
         '#0077B5', '#ff6384', '#c9cbcf', '#0057ff', '#00a9f4', '#2ccdc9', '#5e72e4'
     ]
 ];

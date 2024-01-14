@@ -59,6 +59,5 @@
         <script src="{{ $projects->cdn() }}"></script>
 
         {{ $projects->script() }}
-        </body>
     </main>
 </x-layout>

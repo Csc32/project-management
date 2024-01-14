@@ -2,6 +2,6 @@
     <span> Agregar
     </span>
     <span>
-        <x-heroicon-s-user-plus style="height: 21px" />
+        <x-heroicon-s-plus style="height: 21px" />
     </span>
 </button>

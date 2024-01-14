@@ -17,7 +17,6 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                 </articles>
                 <articles class="w-96 h-[27rem] flex flex-col p-4">
                     <h3 class="font-bold">Estudiantes</h3>
@@ -27,7 +26,6 @@
                                 {!! $projects->container() !!}
                             </div>
                         </div>
-                    </div>
                     </div>
                 </articles>
             </section>

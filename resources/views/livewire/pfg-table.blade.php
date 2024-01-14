@@ -4,15 +4,14 @@
             <tr>
                 <th scope="col" class="px-6 py-3">
                     NOMBRES </th>
-                <th scope="col" class="px-6 py-3" colspan="2" rowspan="2">
+                <th scope="col" class="px-6 py-3" colspan="2">
                     ACCIÓN </th>
             </tr>
         </thead>
         <tbody>
             @if (empty($pfgs) || count($pfgs) <= 0)
                 <tr class="bg-bgLight border-b border-b-logo-500 text-md-center">
-                    <td>
-                        No se ha registrado algun Programa de Formación de Grado
+                    <td class="px-6 py-4" colspan="2"> No se ha registrado algun Programa de Formación de Grado
                     </td>
                 </tr>
             @else

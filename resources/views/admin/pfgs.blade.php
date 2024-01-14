@@ -9,7 +9,7 @@
             <livewire:pfg-modal />
             <livewire:alert />
             <x-title-component />
-            <section class="flex flex-row justify-evenly items-start py-5 h-full">
+            <section class="flex flex-row justify-evenly items-start py-5 h-full gap-5">
                 {{--                     <x-search /> --}}
                 <section class="w-1/2 flex flex-col gap-5 py-5">
                     <article class="w-100">
@@ -31,7 +31,7 @@
                         </div>
                     </article>
                 </section>
-                <section class="flex flex-col">
+                <section class="flex flex-col w-1/2">
                     <section class="w-full flex row items-center flex-1">
                         <livewire:search />
                         <livewire:pfg-btn-add :attrs="[

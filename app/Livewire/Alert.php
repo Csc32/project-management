@@ -24,6 +24,12 @@ class Alert extends Component
         $this->show = "";
     }
 
+    #[On('save')]
+    public function handleSave($message)
+    {
+        $this->message = $message;
+        $this->show = "";
+    }
     #[On('delete')]
     public function handleDeleted($message)
     {

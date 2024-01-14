@@ -10,9 +10,9 @@
         </thead>
         <tbody>
             @if (empty($pfgs) || count($pfgs) <= 0)
-                <tr class="bg-bgLight border-b border-b-logo-500">
+                <tr class="bg-bgLight border-b border-b-logo-500 text-md-center">
                     <td>
-                        No hay profesores registrados
+                        No se ha registrado algun Programa de Formación de Grado
                     </td>
                 </tr>
             @else

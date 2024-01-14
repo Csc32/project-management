@@ -6,6 +6,7 @@
             <x-nav-bottom />
         </x-aside>
         <section class="w-full flex flex-col px-9 py-9">
+            <livewire:pfg-modal />
             <livewire:alert />
             <x-title-component />
             <section class="flex flex-row justify-evenly items-start py-5 h-full">

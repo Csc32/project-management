@@ -14,8 +14,8 @@
                     <input type="text" id="name"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Informatica" required wire:model='name' name="name">
-                    @if (isset($errors['name'][0]))
-                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errors['name'][0] }}</p>
+                    @if (isset($errorsPfg[0]))
+                        <p class="text-sm font-medium text-error-900 mt-1">{{ $errorsPfg[0] }}</p>
                     @endif
                 </div>
             </div>

@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Pfgs;
 use Livewire\Component;
 use App\traits\ValidationRules;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\On;
 
 class PfgModal extends Component
@@ -13,6 +15,26 @@ class PfgModal extends Component
     public $attribute = 'hidden';
     public $name;
     public $btnTitle = "Agregar";
+    public $errorsPfg;
+
+    public function rules(): array
+    {
+        return [
+            "name" => [
+                "required",
+                "string",
+                Rule::unique("pfgs", "name"),
+            ]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            "name.required" => "El nombre es requerido",
+            "name.unique" => "El nombre ya esta registrado",
+        ];
+    }
     #[On('show')]
     public function show($isHidden = true)
     {
@@ -25,7 +47,7 @@ class PfgModal extends Component
     public function close()
     {
         $this->attribute = "hidden";
-        $this->errors = [];
+        $this->errorsPfg = [];
     }
 
     public function save()
@@ -34,16 +56,23 @@ class PfgModal extends Component
             "name" => $this->name
         ];
 
-        $pfgFind = Pfgs::firstOrCreate(['name' => strtoupper($this->name)]);
+        $validateData = Validator::make($data, $this->rules(), $this->messages());
 
-        if ($pfgFind->wasRecentlyCreated) {
+        if ($validateData->fails()) {
+            $this->errorsPfg = $validateData->errors()->get('name');
+        }
+
+        if ($validateData->passes()) {
+            $validated = $validateData->validated();
+            $pfg = Pfgs::create(['name' => strtoupper($validated['name'])]);
+            $this->resetForm();
             return $this->dispatch("save", message: "Pfg Guardado correctamente");
         }
     }
     public function resetForm()
     {
 
-        $this->attribute = "";
+        $this->attribute = "hidden";
         $this->name = "";
         $this->errors = [];
     }

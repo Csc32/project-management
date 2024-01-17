@@ -19,6 +19,11 @@ class PfgTable extends Component
     {
         $this->searchValue = $value;
     }
+
+    public function edit($id)
+    {
+        return $this->dispatch("edit", $id);
+    }
     public function render()
     {
         $pfgs = Pfgs::query()

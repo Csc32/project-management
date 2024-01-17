@@ -16,6 +16,7 @@ class PfgModal extends Component
     public $name;
     public $btnTitle = "Agregar";
     public $errorsPfg;
+    protected Pfgs $pfg;
 
     public function rules(): array
     {
@@ -39,6 +40,8 @@ class PfgModal extends Component
     public function show($isHidden = true)
     {
         if ($isHidden) {
+            $this->name = "";
+            $this->btnTitle = "Agregar";
             return $this->attribute = "";
         }
         return $this->attribute = "hidden";
@@ -68,6 +71,22 @@ class PfgModal extends Component
             $this->resetForm();
             return $this->dispatch("save", message: "Pfg Guardado correctamente");
         }
+    }
+
+    #[On('edit')]
+    public function edit($id)
+    {
+        $this->show();
+        $this->pfg = Pfgs::find($id);
+        $this->name = $this->pfg->name;
+        $this->btnTitle = "Editar";
+    }
+
+    public function update()
+    {
+        $this->pfg->name = $this->name;
+        $this->pfg->save();
+        return $this->dispatch("update", message: "Actualizado correctamente");
     }
     public function resetForm()
     {

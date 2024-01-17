@@ -30,6 +30,13 @@ class Alert extends Component
         $this->message = $message;
         $this->show = "";
     }
+
+    #[On('update')]
+    public function handleUpdate($message)
+    {
+        $this->message = $message;
+        $this->show = "";
+    }
     #[On('delete')]
     public function handleDeleted($message)
     {

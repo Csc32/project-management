@@ -6,7 +6,7 @@
             class="absolute text-bgLight w-10 h-10 rounded-lg bg-error-900 flex items-center justify-center font-semibold right-1 top-1">
             <x-heroicon-o-x-mark style="height: 40px" />
         </button>
-        <form wire:submit='save'>
+        <form {{ $btnTitle == 'Agregar' ? "wire:submit='save'" : "wire:submit='update'" }}>
             <div class="flex flex-1 w-full">
                 <div class="w-full m-4">
                     <label for="name" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Nombre
@@ -20,9 +20,15 @@
                 </div>
             </div>
             <div class="mb-6 w-full flex justify-center border-t-[3px] border-t-logo-900 pt-5 ">
-                <x-btn-add-plus type='submit'>
-                    {{ $btnTitle }}
-                </x-btn-add-plus>
+                @if ($btnTitle == 'Agregar')
+                    <x-btn-add-plus type='submit'>
+                        {{ $btnTitle }}
+                    </x-btn-add-plus>
+                @else
+                    <x-btn-edit-pencil type='submit'>
+                        {{ $btnTitle }}
+                    </x-btn-edit-pencil>
+                @endif
             </div>
         </form>
     </div>

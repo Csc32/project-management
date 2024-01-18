@@ -24,6 +24,11 @@ class PfgTable extends Component
     {
         return $this->dispatch("edit", $id);
     }
+    #[On('update')]
+    public function updated()
+    {
+        return $this->render();
+    }
     public function render()
     {
         $pfgs = Pfgs::query()

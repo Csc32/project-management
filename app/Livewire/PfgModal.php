@@ -16,8 +16,8 @@ class PfgModal extends Component
     public $name;
     public $btnTitle = "Agregar";
     public $errorsPfg;
-    protected Pfgs $pfg;
-
+    public $id;
+    public $pfg;
     public function rules(): array
     {
         return [
@@ -77,6 +77,7 @@ class PfgModal extends Component
     public function edit($id)
     {
         $this->show();
+        $this->id = $id;
         $this->pfg = Pfgs::find($id);
         $this->name = $this->pfg->name;
         $this->btnTitle = "Editar";
@@ -84,9 +85,22 @@ class PfgModal extends Component
 
     public function update()
     {
-        $this->pfg->name = $this->name;
-        $this->pfg->save();
-        return $this->dispatch("update", message: "Actualizado correctamente");
+        // Check if $pfg is set
+        if ($this->pfg) {
+            $validateData = Validator::make(["name" => $this->name], $this->rules(), $this->messages());
+
+            if ($validateData->fails()) {
+                $this->errorsPfg = $validateData->errors()->get('name');
+            }
+
+            if ($validateData->passes()) {
+                $validated = $validateData->validated();
+                $this->pfg->name = $validated['name'];
+                $this->pfg->save();
+                $this->resetForm();
+                return $this->dispatch("update", message: "Actualizado correctamente");
+            }
+        }
     }
     public function resetForm()
     {

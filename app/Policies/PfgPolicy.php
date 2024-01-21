@@ -6,7 +6,7 @@ use App\Models\Pfgs;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class UserPolicy
+class PfgPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class UserPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, User $model): bool
+    public function view(User $user, Pfgs $pfgs): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class UserPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, User $model): bool
+    public function update(User $user, Pfgs $pfgs): bool
     {
         //
     }
@@ -43,23 +43,19 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $currentUser, User $targetUser): bool
+    public function delete(User $currentUser, Pfgs $pfg): bool
     {
         //
-        if ($currentUser['rol_fk'] == 1 && $targetUser['rol_fk'] == 2) {
+        if ($currentUser['rol_fk'] == 1 && $pfg->id !== null) {
             return true;
         }
-
-        if ($currentUser['rol_fk'] == 2 && $targetUser['rol_fk'] == 3) {
-            return true;
-        }
-
         return false;
     }
+
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, User $model): bool
+    public function restore(User $user, Pfgs $pfgs): bool
     {
         //
     }
@@ -67,7 +63,7 @@ class UserPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, User $model): bool
+    public function forceDelete(User $user, Pfgs $pfgs): bool
     {
         //
     }

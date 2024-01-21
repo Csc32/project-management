@@ -29,12 +29,30 @@ class PfgTable extends Component
     {
         return $this->render();
     }
+
+    #[On('save')]
+    public function created()
+    {
+        return $this->render();
+    }
+
+    public function delete($id)
+    {
+        $pfg = Pfgs::find($id);
+        $this->authorize("delete", $pfg);
+        $pfgName = $pfg->name;
+        $pfg->delete();
+        return dispatch("delete", "El PFG $pfgName fue eliminado");
+    }
     public function render()
     {
         $pfgs = Pfgs::query()
-            ->when($this->searchValue, function (Builder $query) {
-                $query->where("name", "like", $this->searchValue . "%");
-            })
+            ->when(
+                $this->searchValue,
+                function (Builder $query) {
+                    $query->where("name", "like", $this->searchValue . "%");
+                }
+            )
             ->paginate(10);
         return view('livewire.pfg-table', ['pfgs' => $pfgs]);
     }

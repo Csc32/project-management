@@ -98,7 +98,7 @@ class PfgModal extends Component
                 $this->pfg->name = $validated['name'];
                 $this->pfg->save();
                 $this->resetForm();
-                return $this->dispatch("update", message: "Actualizado correctamente");
+                return $this->dispatch("update", message: "PFG Actualizado correctamente");
             }
         }
     }

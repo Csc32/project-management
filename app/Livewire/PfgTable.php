@@ -41,8 +41,12 @@ class PfgTable extends Component
         $pfg = Pfgs::find($id);
         $this->authorize("delete", $pfg);
         $pfgName = $pfg->name;
-        $pfg->delete();
-        return dispatch("delete", "El PFG $pfgName fue eliminado");
+        try {
+            $pfg->delete();
+        } catch (\Illuminate\Database\QueryException $e) {
+            return $this->dispatch("error", ['message' => "Hubo un error al eliminar el PFG: $pfgName, verifique que no tenga estudiantes"]);
+        }
+        return $this->dispatch("delete", ['message' => "El PFG $pfgName fue eliminado", 'isError' => false]);
     }
     public function render()
     {

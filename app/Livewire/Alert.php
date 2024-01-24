@@ -40,7 +40,7 @@ class Alert extends Component
     #[On('delete')]
     public function handleDeleted($message)
     {
-        $this->message = $message['message'];
+        $this->message = $message;
         $this->show = "";
     }
     #[On('error')]

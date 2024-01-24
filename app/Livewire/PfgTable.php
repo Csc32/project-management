@@ -46,7 +46,7 @@ class PfgTable extends Component
         } catch (\Illuminate\Database\QueryException $e) {
             return $this->dispatch("error", ['message' => "Hubo un error al eliminar el PFG: $pfgName, verifique que no tenga estudiantes"]);
         }
-        return $this->dispatch("delete", ['message' => "El PFG $pfgName fue eliminado", 'isError' => false]);
+        return $this->dispatch("delete", ['message' => "El PFG $pfgName fue eliminado"]);
     }
     public function render()
     {

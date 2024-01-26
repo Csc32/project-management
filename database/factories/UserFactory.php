@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -21,10 +20,10 @@ class UserFactory extends Factory
     {
         return [
             "user_id" => rand(0, 1000),
-            "names" => fake()->name(),
+            "names" => strtoupper(fake()->name()),
             "pfg_fk" => rand(1, 5),
             "sex" => $this->sex[rand(0, 1)],
-            "lastnames" => fake()->lastName(),
+            "lastnames" => strtoupper(fake()->lastName()),
             "date_of_birth" => fake()->date(),
             "telephone_number" => fake()->phoneNumber(),
             "email" => fake()->email(),
@@ -38,8 +37,10 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(
+            fn (array $attributes) => [
             'email_verified_at' => null,
-        ]);
+            ]
+        );
     }
 }

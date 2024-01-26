@@ -18,7 +18,7 @@ class RolesSeeder extends Seeder
         foreach ($this->attributes as $attr) {
             Roles::factory()->create(
                 [
-                    "name" => $attr
+                    "name" => strtoupper($attr)
                 ]
             );
         }

@@ -19,7 +19,7 @@ class PfgsSeeder extends Seeder
         foreach ($this->attributes as $attr) {
             Pfgs::factory()->create(
                 [
-                    "name" => $attr
+                    "name" => strtoupper($attr)
                 ]
             );
         }

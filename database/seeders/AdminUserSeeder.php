@@ -15,15 +15,15 @@ class AdminUserSeeder extends Seeder
         //
         User::factory()->create(
             [
-            "user_id" => "123456",
-            "names" => strtoupper("Aministrador"),
-            "lastnames" =>strtoupper("Aministrador"),
-            "sex" => "M",
-            "password" => bcrypt("123456"),
-            "telephone_number" => "04161234567",
-            "email" => "administrador@gmail.com",
-            "date_of_birth" => "01/11/2002",
-            "rol_fk" => 1
+                "user_id" => "123456",
+                "names" => strtoupper("Administrador"),
+                "lastnames" => strtoupper("Administrador"),
+                "sex" => "M",
+                "password" => bcrypt("123456"),
+                "telephone_number" => "04161234567",
+                "email" => "administrador@gmail.com",
+                "date_of_birth" => "01/11/2002",
+                "rol_fk" => 1
             ]
         );
     }

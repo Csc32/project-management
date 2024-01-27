@@ -40,4 +40,4 @@ Route::middleware("auth")->group(function () {
 
 /* Route::get("/home", [User::class, "index"])->middleware("auth")->name("home"); */
 
-Route::post('/logout', [User::class, "logout"]);
+Route::post('/logout', [User::class, "logout"])->name("logout")->middleware("auth");

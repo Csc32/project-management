@@ -8,7 +8,7 @@
                 <span><x-heroicon-m-cog-8-tooth style="height: 20px;" /></span> Configuracion</a>
         </li>
         <li class="text-desactivate font-normal text-sm">
-            <form method="POST" action="/logout" class="inline">
+            <form method="POST" action="{{ route('logout') }}" novalidate class="inline">
                 @csrf
                 <button type="submit"
                     class="flex justify-center items-center text-white py-2 px-4 w-full h-16 gap-4 hover:text-titleLight-900 ease-in-out transition-all duration-[0.5s]">

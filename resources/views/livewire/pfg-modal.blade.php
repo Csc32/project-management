@@ -6,7 +6,7 @@
             class="absolute text-bgLight w-10 h-10 rounded-lg bg-error-900 flex items-center justify-center font-semibold right-1 top-1">
             <x-heroicon-o-x-mark style="height: 40px" />
         </button>
-        <form {{ $btnTitle == 'Agregar' ? 'wire:submit=save' : 'wire:submit=update' }}>
+        <form wire:submit.prevent="{{ $btnTitle == 'Agregar' ? 'save' : 'update' }}">
             <div class="flex flex-1 w-full">
                 <div class="w-full m-4">
                     <label for="name" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Nombre

@@ -62,7 +62,7 @@ class PfgModal extends Component
         $validateData = Validator::make($data, $this->rules(), $this->messages());
 
         if ($validateData->fails()) {
-            $this->errorsPfg = $validateData->errors()->get('name');
+            return $this->errorsPfg = $validateData->errors()->get('name');
         }
 
         if ($validateData->passes()) {
@@ -90,12 +90,12 @@ class PfgModal extends Component
             $validateData = Validator::make(["name" => $this->name], $this->rules(), $this->messages());
 
             if ($validateData->fails()) {
-                $this->errorsPfg = $validateData->errors()->get('name');
+                return $this->errorsPfg = $validateData->errors()->get('name');
             }
 
             if ($validateData->passes()) {
                 $validated = $validateData->validated();
-                $this->pfg->name = $validated['name'];
+                $this->pfg->name = strtoupper($validated['name']);
                 $this->pfg->save();
                 $this->resetForm();
                 return $this->dispatch("update", message: "PFG Actualizado correctamente");

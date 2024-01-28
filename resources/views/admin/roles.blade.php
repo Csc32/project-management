@@ -8,9 +8,9 @@
         </x-aside>
         <section class="w-full flex flex-col px-9 py-9">
             <x-title-component />
-            <section class="w-full d-flex flex-1 justify-center">
-                <h3 class="text-2xl font-semibold">Roles</h3>
+            <section class="w-full d-flex flex-1 justify-evenly py-5">
                 <livewire:roles.rol-table />
+                <livewire:roles.charts.role-chart />
             </section>
         </section>
     </main>

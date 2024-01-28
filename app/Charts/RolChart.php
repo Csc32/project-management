@@ -18,14 +18,16 @@ class RolChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
-        $roles = Roles::with('users')->get();
-        $usersByRol = User::withCount('role');
-        return $this->chart->barChart()
-            ->setTitle('Los Angeles vs Miami.')
-            ->setSubtitle('Wins during season 2021.')
-            ->setColors(['#FFC107', '#D32F2F'])
-            ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
-            ->addData('Boston', [7, 3, 8, 2, 6, 4])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
+        $roles = Roles::withCount('users')->get();
+        $userCount = $roles->pluck('users_count');
+        $chart = $this->chart->barChart()
+            ->setTitle('Total de Ususarios por roles')
+            ->setFontFamily('montserrat');
+        foreach ($roles as $role) {
+            $userCount = $role->users_count;
+            $chart->addData($role->name, [$userCount]);
+        }
+        $chart->setLabels(['Total de usuarios'])->setFontFamily('montserrat');
+        return $chart;
     }
 }

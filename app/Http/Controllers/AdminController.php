@@ -10,6 +10,7 @@ use App\Models\Projects;
 use App\Models\User;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -33,6 +34,11 @@ class AdminController extends Controller
     public function showPfgs(PfgStudentChart $studentChart, PfgTeacherChart $teacherChart)
     {
         return view("admin.pfgs", ['teacherChart' => $teacherChart->build(), 'studentChart' => $studentChart->build()]);
+    }
+
+    public function showRoles(): View
+    {
+        return view("admin.roles");
     }
 
     /**

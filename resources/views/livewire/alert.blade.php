@@ -1,5 +1,5 @@
 <div id="alert-1"
-    class="flex items-center p-4 mb-4 mr- rounded-lg top-2 left-3 w-[98%] {{ $isError ? 'text-error-900 bg-error-100 dark:bg-error-900 dark:text-error-200' : 'text-green-text bg-green-200 dark:bg-green-700 dark:text-green-100' }} {{ $show }}"
+    class="flex items-center p-4 mb-4 mr- rounded-lg top-2 left-3 w-[98%] {{ $isError ? 'text-error-900 bg-error-100 dark:bg-error-900 dark:text-error-200' : 'text-green-text bg-green-200 dark:bg-green-700 dark:text-green-100' }} {{ $show }} z-10 fixed"
     role="alert">
     <x-fas-info-circle class="h-5" />
     <div class="ms-3 text-sm font-medium">

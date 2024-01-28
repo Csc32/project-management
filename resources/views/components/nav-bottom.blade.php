@@ -1,8 +1,8 @@
 @php
     $routeName = \Request::route()->getName();
 @endphp
-<section class="flex flex-col w-full justify-center items-center gap-1">
-    <ul class="py-4 font-normal text-sm">
+<section class="flex flex-col w-full justify-center items-center gap-1 h-5">
+    <ul class="py-4 font-normal text-sm flex-1">
         <li><a href="{{ route('admin.config') }}"
                 class="flex justify-center items-center text-white py-2 px-4 w-full h-16 gap-4 @if ($routeName === 'admin.config') text-titleLight-900 @else text-desactivate @endif">
                 <span><x-heroicon-m-cog-8-tooth style="height: 20px;" /></span> Configuracion</a>

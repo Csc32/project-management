@@ -16,7 +16,11 @@
         $title = 'Gestion de Programas de Formación de grado';
     }
     if ($routeName == 'admin.roles') {
-        $title = 'Gestionar roles y permisos';
+        $title = 'Gestionar Roles';
+    }
+
+    if ($routeName == 'admin.permission') {
+        $title = 'Gestionar Permisos';
     }
 
     if ($routeName == 'admin.config') {

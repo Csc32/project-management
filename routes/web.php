@@ -31,6 +31,7 @@ Route::middleware("auth")->group(function () {
         Route::get("/teachers", [AdminController::class, "showTeachers"])->name("admin.teachers");
         Route::get("/pfgs", [AdminController::class, "showPfgs"])->name("admin.pfgs");
         Route::get("/roles", [AdminController::class, "showRoles"])->name("admin.roles");
+        Route::get("/permissions", [AdminController::class, "showPermissions"])->name("admin.permissions");
         Route::get("/projects", [AdminController::class, "showProjects"])->name("admin.projects");
         Route::get("/config", [AdminController::class, "showConfig"])->name("admin.config");
     });

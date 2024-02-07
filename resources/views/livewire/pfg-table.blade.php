@@ -1,6 +1,6 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-title-900 dark:text-title-900">
-        <thead class="text-xs text-white uppercase bg-desactivate bg dark:text-white">
+        <thead class="text-xs text-title-900 uppercase bg-desactivate bg dark:text-white">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     NOMBRES </th>
@@ -10,8 +10,8 @@
         </thead>
         <tbody>
             @if (empty($pfgs) || count($pfgs) <= 0)
-                <tr class="bg-bgLight border-b border-b-logo-500 text-md-center">
-                    <td class="px-6 py-4" colspan="2"> No se ha registrado algun Programa de Formación de Grado
+                <tr class="bg-bgLight border-b border-b-logo-500 text-md-center uppercase">
+                    <td class="px-6 py-4 center" colspan="2"> No existe el Programa de Formacion de Grado
                     </td>
                 </tr>
             @else

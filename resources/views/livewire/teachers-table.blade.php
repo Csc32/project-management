@@ -17,10 +17,8 @@
         </thead>
         <tbody>
             @if (empty($teachers) || count($teachers) <= 0)
-                <tr class="bg-bgLight border-b border-b-logo-500">
-                    <td>
-                        No hay profesores registrados
-                    </td>
+                <tr class="bg-bgLight border-b border-b-logo-500 text-md-center uppercase text-center" scope='row'>
+                    <td class="px-6 py-4" colspan="2"> No existe el profesor con ese nombre                    </td>
                 </tr>
             @else
                 @foreach ($teachers as $teacher)

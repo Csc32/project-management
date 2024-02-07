@@ -11,7 +11,7 @@
                 <div>
                     <label for="user_id" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Cédula
                         <span class="text-delete">*</span></label>
-                    <input type="text" id="first_name"
+                    <input type="text" id="user_id"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="12345" required wire:model='user_id' name="user_id">
                     @if (isset($errors['user_id'][0]))
@@ -19,7 +19,7 @@
                     @endif
                 </div>
                 <div>
-                    <label for="names" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Nombres
+                    <label for="first_name" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Nombres
                         <span class="text-delete">*</span></label>
                     <input type="text" id="first_name"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-sm  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -104,7 +104,7 @@
                 <div class="mb-6">
                     <label for="date" class="block mb-2 text-md font-medium text-title-900 dark:text-white">Fecha de
                         nacimiento <span class="text-delete">*</span></label>
-                    <input type="date"
+                    <input type="date" id="date"
                         class="bg-borderLight border-[3px] border-logo-900 rounded-md text-md  block w-full pl-5 p-2.5 placeholder:text-desactivate text-title-900 focus:border-title-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         wire:model='date' />
                 </div>

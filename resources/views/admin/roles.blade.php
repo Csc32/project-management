@@ -8,6 +8,7 @@
         </x-aside>
         <section class="w-full flex flex-col px-9 py-9">
             <x-title-component />
+            <livewire:roles.role-modal />
             <header class="w-full flex row items-center flex-shrink">
                 {{--                     <x-search /> --}}
                 <livewire:search />

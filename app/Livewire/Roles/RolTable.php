@@ -19,6 +19,12 @@ class RolTable extends Component
         $this->searchValue = $value;
     }
 
+    #[On('save')]
+    public function created()
+    {
+        return $this->render();
+    }
+
     public function render()
     {
 

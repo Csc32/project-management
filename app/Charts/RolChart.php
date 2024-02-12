@@ -14,19 +14,14 @@ class RolChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\BarChart
+    public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
         $roles = Roles::withCount('users')->get();
-        $userCount = $roles->pluck('users_count');
-        $chart = $this->chart->barChart()
-            ->setTitle('Total de Ususarios por roles')
-            ->setFontFamily('montserrat');
-        foreach ($roles as $role) {
-            $userCount = $role->users_count;
-            $chart->addData($role->name, [$userCount]);
-        }
-        $chart->setLabels(['Total de usuarios'])->setFontFamily('montserrat');
 
-        return $chart;
+        $data = $roles->pluck('users_count');
+        $arrayData = $data->toArray();
+
+        return $this->chart->pieChart()
+            ->setTitle('Total Usuarios')->setFontFamily('montserrat')->addData($arrayData)->setLabels($roles->pluck('name')->toArray());
     }
 }

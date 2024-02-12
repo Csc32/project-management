@@ -14,8 +14,8 @@ return new class extends Migration
         //
         Schema::create('project_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("project_fk")->constrained("projects")->onUpdate("cascade")->onDelete("cascade");
-            $table->foreignId("category_fk")->constrained("categories")->onUpdate("cascade");
+            $table->foreignId('project_fk')->constrained('projects')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('category_fk')->constrained('categories')->onUpdate('cascade');
         });
     }
 

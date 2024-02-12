@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-        Pfgs::class => PfgPolicy::class
+        Pfgs::class => PfgPolicy::class,
         //
     ];
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('kind_projects', function (Blueprint $table) {
             $table->id();
-            $table->string("name", 100);
-            $table->string("abbr", 10);
+            $table->string('name', 100);
+            $table->string('abbr', 10);
         });
     }
 

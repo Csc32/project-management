@@ -2,10 +2,8 @@
 
 namespace App\Charts;
 
-use ArielMejiaDev\LarapexCharts\LarapexChart;
 use App\Models\Roles;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
+use ArielMejiaDev\LarapexCharts\LarapexChart;
 
 class RolChart
 {
@@ -28,6 +26,7 @@ class RolChart
             $chart->addData($role->name, [$userCount]);
         }
         $chart->setLabels(['Total de usuarios'])->setFontFamily('montserrat');
+
         return $chart;
     }
 }

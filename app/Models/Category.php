@@ -12,7 +12,7 @@ class Category extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ["category_name"];
+    protected $fillable = ['category_name'];
 
     public function projects(): BelongsToMany
     {

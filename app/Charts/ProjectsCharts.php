@@ -17,9 +17,9 @@ class ProjectsCharts
     {
         return $this->chart->pieChart()
             ->addData([
-                \App\Models\Projects::where("isPresent", "=", true)->count("id"),
-                \App\Models\Projects::where("isPresent", "=", false)->count("id")
+                \App\Models\Projects::where('isPresent', '=', true)->count('id'),
+                \App\Models\Projects::where('isPresent', '=', false)->count('id'),
             ])
-            ->setLabels(['Presentados', "por presentar"])->setDataLabels(true);
+            ->setLabels(['Presentados', 'por presentar'])->setDataLabels(true);
     }
 }

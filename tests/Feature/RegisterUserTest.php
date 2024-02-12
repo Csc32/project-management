@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegisterUserTest extends TestCase
@@ -20,10 +18,10 @@ class RegisterUserTest extends TestCase
 
     public function test_admin_can_log_in(): void
     {
-        $response = $this->post("/log-in", [
-            "user_id" => "123456",
-            "password" => "123456"
+        $response = $this->post('/log-in', [
+            'user_id' => '123456',
+            'password' => '123456',
         ]);
-        $response->assertRedirect("/home");
+        $response->assertRedirect('/home');
     }
 }

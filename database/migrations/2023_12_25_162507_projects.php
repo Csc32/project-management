@@ -15,16 +15,16 @@ return new class extends Migration
 
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->unique();
-            $table->longText("resume");
-            $table->foreignId("pfg_fk")->constrained("pfgs")->onUpdate("cascade")->onDelete("cascade");
-            $table->foreignId("kind_fk")->constrained("kind_projects")->onUpdate("cascade")->onDelete("cascade");
-            $table->boolean("isPresent")->default(0);
+            $table->string('name')->unique();
+            $table->longText('resume');
+            $table->foreignId('pfg_fk')->constrained('pfgs')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('kind_fk')->constrained('kind_projects')->onUpdate('cascade')->onDelete('cascade');
+            $table->boolean('isPresent')->default(0);
             $table->timestamps();
-            $table->date("presented_at")->nullable();
-            $table->longText("source")->nullable();
-            $table->string("image")->nullable();
-            $table->foreignId("teacher_fk")->constrained("users")->onUpdate("cascade")->onDelete("cascade");
+            $table->date('presented_at')->nullable();
+            $table->longText('source')->nullable();
+            $table->string('image')->nullable();
+            $table->foreignId('teacher_fk')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

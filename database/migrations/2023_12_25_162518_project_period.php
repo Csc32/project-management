@@ -14,8 +14,8 @@ return new class extends Migration
         //
         Schema::create('project_period', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("period_fk")->constrained("academic_period")->onUpdate("cascade");
-            $table->foreignId("project_fk")->constrained("projects")->onUpdate("cascade");
+            $table->foreignId('period_fk')->constrained('academic_period')->onUpdate('cascade');
+            $table->foreignId('project_fk')->constrained('projects')->onUpdate('cascade');
         });
     }
 

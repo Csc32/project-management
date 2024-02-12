@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Projects extends Model
@@ -14,9 +13,9 @@ class Projects extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
-        "resume",
-        "isPresent",
+        'name',
+        'resume',
+        'isPresent',
     ];
 
     /*     public function user(): belongsToMany
@@ -25,11 +24,12 @@ class Projects extends Model
     } */
     public function teachers(): BelongsTo
     {
-        return $this->belongsTo(User::class, "teacher_fk");
+        return $this->belongsTo(User::class, 'teacher_fk');
     }
+
     public function student_groups(): HasOne
     {
-        return $this->hasOne(StudentGroups::class, "project_fk");
+        return $this->hasOne(StudentGroups::class, 'project_fk');
     }
 
     public function categories(): BelongsToMany

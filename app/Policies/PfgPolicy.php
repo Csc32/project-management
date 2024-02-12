@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Pfgs;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class PfgPolicy
 {
@@ -49,6 +48,7 @@ class PfgPolicy
         if ($currentUser['rol_fk'] == 1 && $pfg->id !== null) {
             return true;
         }
+
         return false;
     }
 

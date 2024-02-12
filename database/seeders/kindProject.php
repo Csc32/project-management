@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\KindProject as ModelsKindProject;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class kindProject extends Seeder
@@ -15,13 +14,13 @@ class kindProject extends Seeder
     {
         //
         ModelsKindProject::factory()->create([
-            "name" => "Tecnico Superior Universitario",
-            "abbr" => "TSU"
+            'name' => 'Tecnico Superior Universitario',
+            'abbr' => 'TSU',
         ]);
 
         ModelsKindProject::factory()->create([
-            "name" => "Licenciado",
-            "abbr" => "LIC"
+            'name' => 'Licenciado',
+            'abbr' => 'LIC',
         ]);
     }
 }

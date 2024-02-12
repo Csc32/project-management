@@ -15,11 +15,11 @@ class StudentGroups extends Model
 
     public function projects(): HasOne
     {
-        return $this->hasOne(Projects::class, "project_fk");
+        return $this->hasOne(Projects::class, 'project_fk');
     }
 
     public function students(): HasMany
     {
-        return $this->hasMany(User::class, "student_fk");
+        return $this->hasMany(User::class, 'student_fk');
     }
 }

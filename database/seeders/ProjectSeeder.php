@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Projects;
-use App\Models\students;
-use App\Models\teachers;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ProjectSeeder extends Seeder

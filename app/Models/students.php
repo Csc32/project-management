@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class students extends Model
 {
     use HasFactory;
+
     public function projects(): HasOne
     {
-        return $this->hasOne(Projects::class, "project_groups", "student_id", "project_id");
+        return $this->hasOne(Projects::class, 'project_groups', 'student_id', 'project_id');
     }
 }

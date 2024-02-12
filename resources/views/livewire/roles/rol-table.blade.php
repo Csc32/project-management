@@ -1,4 +1,4 @@
-<div class="w-full relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="w-full relative overflow-x-auto shadow-md sm:rounded-lg mt-2">
     <table class="w-full text-sm rtl:text-right text-title-900 dark:text-title-900 text-center">
         <thead class="text-xs text-white uppercase bg-desactivate bg dark:text-white">
             <tr>
@@ -20,7 +20,7 @@
                         <td class="px-6 py-4">
                             {{ $rol->name }}
                         </td>
-                        <td class="px-6 py-4 flex row gap-5">
+                        <td class="px-6 py-4 flex row justify-center gap-5" colspan='2'>
                             <a href="{{ route('admin.roles') }}/{{ $rol->id }}"
                                 class="flex items-center gap-3  text-route-900 font-semibold"
                                 wire:key='{{ $rol->id }}' wire:click.prevent='edit({{ $rol->id }})'>

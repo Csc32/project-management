@@ -12,6 +12,6 @@ class teachers extends Model
 
     public function projects(): HasMany
     {
-        return $this->hasMany(Projects::class, "project_groups", "teacher_id", "project_id");
+        return $this->hasMany(Projects::class, 'project_groups', 'teacher_id', 'project_id');
     }
 }

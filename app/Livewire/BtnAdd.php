@@ -8,6 +8,7 @@ use Livewire\Component;
 class BtnAdd extends Component
 {
     use ForwardsAttributes;
+
     public function mount(...$attrs)
     {
         $this->mapAttributes(...$attrs);
@@ -15,7 +16,7 @@ class BtnAdd extends Component
 
     public function show()
     {
-        $this->dispatch('show', ["isHidden" => false]);
+        $this->dispatch('show', ['isHidden' => false]);
     }
 
     public function render()

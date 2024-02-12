@@ -2,9 +2,9 @@
 
 namespace App\Charts;
 
+use App\Models\Pfgs;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Pfgs;
 
 class PfgStudentChart
 {
@@ -17,8 +17,8 @@ class PfgStudentChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
-        $studentByPfg  = Pfgs::withCount(['user' => function (Builder $query) {
-            $query->where("users.rol_fk", "=", 3);
+        $studentByPfg = Pfgs::withCount(['user' => function (Builder $query) {
+            $query->where('users.rol_fk', '=', 3);
         }])->get();
         $data = $studentByPfg->pluck('user_count');
 

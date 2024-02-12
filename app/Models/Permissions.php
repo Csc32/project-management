@@ -12,7 +12,7 @@ class Permissions extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ["name"];
+    protected $fillable = ['name'];
 
     public function permissions(): BelongsToMany
     {

@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class UserFactory extends Factory
 {
+    public $sex = ['M', 'F'];
 
-    public $sex = ["M", "F"];
     /**
      * Define the model's default state.
      *
@@ -19,16 +19,16 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            "user_id" => rand(0, 1000),
-            "names" => strtoupper(fake()->name()),
-            "pfg_fk" => rand(1, 5),
-            "sex" => $this->sex[rand(0, 1)],
-            "lastnames" => strtoupper(fake()->lastName()),
-            "date_of_birth" => fake()->date(),
-            "telephone_number" => fake()->phoneNumber(),
-            "email" => fake()->email(),
-            "password" => fake()->password(8),
-            "rol_fk" => rand(1, 3),
+            'user_id' => rand(0, 1000),
+            'names' => strtoupper(fake()->name()),
+            'pfg_fk' => rand(1, 5),
+            'sex' => $this->sex[rand(0, 1)],
+            'lastnames' => strtoupper(fake()->lastName()),
+            'date_of_birth' => fake()->date(),
+            'telephone_number' => fake()->phoneNumber(),
+            'email' => fake()->email(),
+            'password' => fake()->password(8),
+            'rol_fk' => rand(1, 3),
         ];
     }
 
@@ -39,7 +39,7 @@ class UserFactory extends Factory
     {
         return $this->state(
             fn (array $attributes) => [
-            'email_verified_at' => null,
+                'email_verified_at' => null,
             ]
         );
     }

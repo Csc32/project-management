@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Roles\Charts;
 
-use Livewire\Component;
 use App\Charts\RolChart;
+use Livewire\Component;
 
 class RoleChart extends Component
 {

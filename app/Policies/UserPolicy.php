@@ -2,9 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Pfgs;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class UserPolicy
 {
@@ -56,6 +54,7 @@ class UserPolicy
 
         return false;
     }
+
     /**
      * Determine whether the user can restore the model.
      */

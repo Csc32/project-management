@@ -11,8 +11,8 @@ class KindProject extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
-        "abbr"
+        'name',
+        'abbr',
     ];
 
     public $timestamps = false;
